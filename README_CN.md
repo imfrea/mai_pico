@@ -47,7 +47,7 @@ https://github.com/whowechina/
 它是 CC-NC 授权。所以你只能给自己和你的朋友 DIY，不能利用这个项目赚钱。
 
 ## 如何构建
-###[BOM详单与采购建议](BOM_list_CN.md)
+[BOM详单与采购建议](BOM_list_CN.md)
 
 ### PCB
 
@@ -94,11 +94,11 @@ https://github.com/whowechina/
   * 首先焊接按钮 PCB。  
     <img src="doc/assemble_2.jpg" width="60%">
   * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。BUTTON 信号引脚还没有焊接，你可以后面再焊接。请不用担心按钮 GPIOs 的顺序，因为它们可以通过命令行界面重新映射。    
-（您可以在其中一片按键上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）
+（您可以在其中一片按键上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）  
     <img src="doc/assemble_3.jpg" width="60%">
     <img src="doc/io_top.png" width="60%">
     <img src="doc/button_top.png" width="60%">
-  * 或者按照此顺序焊接
+  * 或者按照此顺序焊接  
     <img src="doc/assemble_5_order.jpg" width="60%">
   * 你需要 3M5423 UHMW 胶带（或类似的硬且超滑的 PTFE 胶带，厚度 0.2-0.3）。它用来润滑触摸键开关的按钮表面。  
     <img src="doc/button_lub.jpg" width="60%">
