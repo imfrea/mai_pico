@@ -78,7 +78,8 @@ https://github.com/whowechina/
 * 找一个服务定制蚀刻 ITO 镀膜玻璃。AutoCAD 文件是 `Production\CAD\mai_pico_ito_v*.dwg`。使用 2mm 厚，10-20ohm 平方电阻的 ITO 镀膜玻璃。  
   <img src="doc/ito_glass.jpg" width="70%">
 * ITO 镀膜玻璃通过 "斑马线"（1.6mm 间距：0.8mm 黑色部分和 0.8mm 透明部分）连接到 IO PCB。使用 200°C 的硅加热头将斑马线粘贴到 PCB 的金手指部分和 ITO 镀膜玻璃上。这种线的正式名称是 "热压密封连接器"。  
-  * 如果您无法辨别哪一面是ITO涂层，可以使用万用表的蜂鸣裆来测试（请避免直接用表笔或其他尖锐物品接触涂层，例如使用两片铜箔）
+  * 如果您无法辨别哪一面是ITO涂层，可以使用万用表的蜂鸣裆来测试（请避免直接用表笔或其他尖锐物品接触涂层，例如使用两片铜箔）。
+  * 在压接之前请将PCB金手指擦拭干净。务必完全对齐金手指和黑色部分，压实每一处，做到平整不留下气泡。（排线的长度建议在5cm以内）。
   <img src="doc/zebra_cable.jpg" width="70%">
 * 定制 ITO 镀膜玻璃相对较贵，但我们的尺寸小，所以并不像街机那么贵。这是我订购 ITO 玻璃的店铺，我订购的时候的最小批量是 5 件。据我所知，他们只在中国提供服务。我和他们店铺没有关联，此处提供链接并不表示我为他们的产品和服务负责。  
   https://shop378788148.taobao.com/?spm=2013.1.1000126.2.305e16c4LFf1GW
@@ -94,11 +95,11 @@ https://github.com/whowechina/
   * 首先焊接按钮 PCB。  
     <img src="doc/assemble_2.jpg" width="60%">
   * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。BUTTON 信号引脚还没有焊接，你可以后面再焊接。请不用担心按钮 GPIOs 的顺序，因为它们可以通过命令行界面重新映射。    
-（您可以在其中一片按键上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）  
+（每一段线的长度约为4cm，您可以在其中一片按键上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）  
     <img src="doc/assemble_3.jpg" width="60%">
     <img src="doc/io_top.png" width="60%">
     <img src="doc/button_top.png" width="60%">
-  * 或者按照此顺序焊接  
+  * 按照此顺序焊接则无需后续调整。  
     <img src="doc/assemble_5_order.jpg" width="60%">
   * 你需要 3M5423 UHMW 胶带（或类似的硬且超滑的 PTFE 胶带，厚度 0.2-0.3）。它用来润滑触摸键开关的按钮表面。  
     <img src="doc/button_lub.jpg" width="60%">
@@ -121,6 +122,10 @@ https://github.com/whowechina/
   * 我使用 3M VHB 胶带（0.5mm 或 1mm 厚）将按钮环、ITO 玻璃和显示器粘在一起。
   * 只使用一点胶带，我使用 4 小块胶带将 ITO 玻璃粘到显示器上，另外 4 小块胶带将按钮环粘到 ITO 玻璃上。
   * 不要在 ITO 玻璃的走线上贴胶带，你可以在某个角度光线下看到 ITO 的走线。
+  * `Production\3DPrint\PCB_fold_*.stl` 还提供了一个简易的折叠连接器，用于固定和限制io PCB的活动范围，避免排线意外脱落。它还允许您将io PCB收纳到便携屏的背面。
+    <img src="doc/assembled_PCB_fold_1.jpg" width="60%">
+    <img src="doc/assembled_PCB_fold_2.jpg" width="60%">
+    <img src="doc/assembled_PCB_fold_3.jpg" width="60%">
 
 ### 外壳
   * 设计并使其看起来漂亮是你的工作。
