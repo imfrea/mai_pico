@@ -50,7 +50,6 @@ https://github.com/whowechina/
 [BOM详单与采购建议](BOM_list_CN.md)
 
 ### PCB
-
 * 去 JLCPCB 并使用 gerber zip 文件（最新的 `Production\PCB\mai_io_v*.zip` 和 `Production\PCB\mai_button_v*.zip`）下单，常规 FR-4 板，厚度 1.6mm。你需要 1x io PCB 和 8x 按钮 PCBs 来构建一个 Mai Pico con。  
   <img src="doc/pcbs.jpg" width="50%">
 * 1x Raspberry Pico Pi Pico 或 Pico W。  
@@ -79,7 +78,7 @@ https://github.com/whowechina/
   <img src="doc/ito_glass.jpg" width="70%">
 * ITO 镀膜玻璃通过 "斑马线"（1.6mm 间距：0.8mm 黑色部分和 0.8mm 透明部分）连接到 IO PCB。使用 200°C 的硅加热头将斑马线粘贴到 PCB 的金手指部分和 ITO 镀膜玻璃上。这种线的正式名称是 "热压密封连接器"。  
   * 如果您无法辨别哪一面是ITO涂层，可以使用万用表的蜂鸣裆来测试（请避免直接用表笔或其他尖锐物品接触涂层，例如使用两片铜箔）。
-  * 在压接之前请将PCB金手指擦拭干净。务必完全对齐金手指和黑色部分，压实每一处，做到平整不留下气泡。（排线的长度建议在5cm以内）。
+  * 在压接之前请将PCB金手指擦拭干净。务必完全对齐金手指和黑色部分，压实每一处，做到平整不留下气泡。（排线的总长度建议在5cm以内）。
   <img src="doc/zebra_cable.jpg" width="70%">
 * 定制 ITO 镀膜玻璃相对较贵，但我们的尺寸小，所以并不像街机那么贵。这是我订购 ITO 玻璃的店铺，我订购的时候的最小批量是 5 件。据我所知，他们只在中国提供服务。我和他们店铺没有关联，此处提供链接并不表示我为他们的产品和服务负责。  
   https://shop378788148.taobao.com/?spm=2013.1.1000126.2.305e16c4LFf1GW
@@ -95,7 +94,7 @@ https://github.com/whowechina/
   * 首先焊接按钮 PCB。  
     <img src="doc/assemble_2.jpg" width="60%">
   * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。BUTTON 信号引脚还没有焊接，你可以后面再焊接。请不用担心按钮 GPIOs 的顺序，因为它们可以通过命令行界面重新映射。    
-（每一段线的长度约为4cm，您可以在其中一片按键上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）  
+（每一段线的长度约为4cm，您可以在其中一片按键上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）    
     <img src="doc/assemble_3.jpg" width="60%">
     <img src="doc/io_top.png" width="60%">
     <img src="doc/button_top.png" width="60%">
@@ -116,13 +115,13 @@ https://github.com/whowechina/
   * 分辨率：1920*1080，尺寸：15.6 英寸，刷新率：120Hz（推荐）或 60Hz，内置扬声器。
   * 它们很容易找到。选择闲鱼上有小瑕疵的会便宜得多，也一样很好用。
   * 有两种类型的驱动板，一种只有 micro-HDMI，另一种支持 type-C 显示（方便连接 Nintendo Switch）。两种都可以。  
-    https://www.amazon.com/s?k=portable+display+15.6+120hz&s=price-asc-rank&crid=1CCA2EAYLZDBE&qid=1697276847&sprefix=portable+display+15.6+120hz%2Caps%2C387&ref=sr_st_price-asc-rank&ds=v1%3AqoS0mks05q225yuL8reh50fEEBkTZ583nMPEZJwjXAk
+  https://www.amazon.com/s?k=portable+display+15.6+120hz&s=price-asc-rank&crid=1CCA2EAYLZDBE&qid=1697276847&sprefix=portable+display+15.6+120hz%2Caps%2C387&ref=sr_st_price-asc-rank&ds=v1%3AqoS0mks05q225yuL8reh50fEEBkTZ583nMPEZJwjXAk
 
 ### 粘合到一起
   * 我使用 3M VHB 胶带（0.5mm 或 1mm 厚）将按钮环、ITO 玻璃和显示器粘在一起。
   * 只使用一点胶带，我使用 4 小块胶带将 ITO 玻璃粘到显示器上，另外 4 小块胶带将按钮环粘到 ITO 玻璃上。
   * 不要在 ITO 玻璃的走线上贴胶带，你可以在某个角度光线下看到 ITO 的走线。
-  * `Production\3DPrint\PCB_fold_*.stl` 还提供了一个简易的折叠连接器，用于固定和限制io PCB的活动范围，避免排线意外脱落。它还允许您将io PCB收纳到便携屏的背面。
+  * `Production\3DPrint\PCB_fold_*.stl` 还提供了一个简易的折叠连接器，用于固定和限制io PCB的活动范围，避免排线意外脱落。它还允许您将io PCB收纳到便携屏的背面。    
     <img src="doc/assembled_PCB_fold_1.jpg" width="60%">
     <img src="doc/assembled_PCB_fold_2.jpg" width="60%">
     <img src="doc/assembled_PCB_fold_3.jpg" width="60%">
@@ -132,29 +131,19 @@ https://github.com/whowechina/
 
 ### 固件
 * UF2 文件在 `Production\Firmware` 文件夹中。
-
 * 对于新的构建，连接 USB 到 PC 时按住 BOOTSEL 按钮，会出现一个名为 "RPI-RP2" 的磁盘。将 UF2 固件二进制文件拖入其中。就这样。
-
 * LED 和 Touch 协议的实现遵循 Sucareto 在 https://github.com/Sucareto/Mai2Touch 上的研究。
-
 * 它有一个命令行进行配置。你可以使用这个 Web Serial Terminal 连接到 Mai Pico 的 USB 串口。（注意："?" 是帮助）  
   https://googlechromelabs.github.io/serial-terminal/  
   <img src="doc/cmd.png" width="80%">
-  
 * 可以使用 `gpio` 命令重新映射按钮 GPIOs，固件支持 8 个主按钮和 4 个辅助按钮（分别是：Test, Service, Navigate, Coin）。
-
 * 可以使用 `rgb` 命令为每个按钮分配串联的 RGB LED 数量。
-
 * 可以通过 `level` 命令调整 LED 的亮度。
-
 * 有 MPR121 参数调整和灵敏度设置，自己探索。
+* 它实现了 3 个 COM 端口，一个用于命令行，另外两个用于 LED 和 Touch。通过向命令行发出 `whoami`，每个 COM 端口都会打印它们的身份。  
+  * 如果您的串口号混乱，则可以通过此方式调整：https://learn.microsoft.com/en-us/answers/questions/452998/how-to-assign-static-com-port-number-to-a-device  
+  * 如果您的串口被占用，通过此方式解除：https://soldered.com/learn/how-to-clear-or-reset-com-ports/
 
-* 它实现了 3 个 COM 端口，一个用于命令行，另外两个用于 LED 和 Touch。通过向命令行发出 `whoami`，每个 COM 端口都会打印它们的身份。
-  
-  如果您的串口号混乱，则可以通过此方式调整：https://learn.microsoft.com/en-us/answers/questions/452998/how-to-assign-static-com-port-number-to-a-device
-  
-  如果您的串口被占用，通过此方式解除：https://soldered.com/learn/how-to-clear-or-reset-com-ports/
-  
 * 按钮信号通过 HID Joystick 或 HID NKRO（键盘）发送到主机。有两套 NKRO 键映射，使用 `hid <joy|key1|key2>` 在它们之间切换。在 NKRO 模式下，键映射是：
   * key1：`WEDCXZAQ`-按键环，`3`-Select
   * key2（小键盘）：`89632147`-按键环，`*`-Select
