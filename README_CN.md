@@ -64,6 +64,7 @@ https://github.com/whowechina/
   https://www.sparkfun.com/products/retired/9695 
 
   在将 MP121 模块焊接到主 PCB 板之前，记得用小刀**切断 ADDR 和 GND 之间的微小连线**，注意绝对不要切过头（只需要处理U3 U4这两个模块）。  
+  操作方法可以观看视频 https://www.bilibili.com/video/BV1gt42157SU/
   <img src="doc/mpr121_cut.png" width="40%">
 * 因为我们使用的是 MPR121 模块，而不是芯片，所以 U5、U6、U7 区域的离散组件留空。
 * 1x SN74LV1T34DBVR（SOT-23-5）电平转换器（U8），如果你找不到，可以用 0603 10ohm 电阻（R4）替代。
@@ -99,10 +100,11 @@ https://github.com/whowechina/
 你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。    
     <img src="doc/button_top.png" width="60%">
     <img src="doc/io_top.png" width="60%">
+    <img src="https://private-user-images.githubusercontent.com/28303037/307567372-29aac82f-90ae-47d9-b723-cf2ec78a5680.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTA2ODgwMzAsIm5iZiI6MTcxMDY4NzczMCwicGF0aCI6Ii8yODMwMzAzNy8zMDc1NjczNzItMjlhYWM4MmYtOTBhZS00N2Q5LWI3MjMtY2YyZWM3OGE1NjgwLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzE3VDE1MDIxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyNTFlNmI4ODM3NWRlZDFiODZkY2MzMjk0OTA1ZDY1MmJhZDA1MDQyNjJmOTc1ZWVmZGU3YjkyNjI2OTY2NWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.1lZASZEUWlqn3xbAnIYQqkCGwSqdu7LDVvmoC4MNrx4" width="60%">
   * 按照此顺序连接则无需后续调整。    
     <img src="doc/assemble_5_order.jpg" width="60%">
   * 如果你还需要Service（服务键），Test（测试键），Navigate（选择键），Coin（投币键）可自行补丁。    
-    <img src="https://private-user-images.githubusercontent.com/11623830/304104492-cf639717-335c-4987-a29b-bce4c4a1cd14.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTAwODQ1ODEsIm5iZiI6MTcxMDA4NDI4MSwicGF0aCI6Ii8xMTYyMzgzMC8zMDQxMDQ0OTItY2Y2Mzk3MTctMzM1Yy00OTg3LWEyOWItYmNlNGM0YTFjZDE0LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzEwVDE1MjQ0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWIwMzQxZWQ4ZDhiYmNiZDMyMzM3MWUyMTEzNmJlZjJhYzNjZjhjNmNmYmJhYzllZjRhOWNkOTc3MTQ0MDE3MmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.W7D1-FbNU75NQfbvPq9w0QKbj5iqnfxDicHBJXfrwvY"  width="60%">
+    <img src="https://private-user-images.githubusercontent.com/11623830/304104492-cf639717-335c-4987-a29b-bce4c4a1cd14.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTAwODQ1ODEsIm5iZiI6MTcxMDA4NDI4MSwicGF0aCI6Ii8xMTYyMzgzMC8zMDQxMDQ0OTItY2Y2Mzk3MTctMzM1Yy00OTg3LWEyOWItYmNlNGM0YTFjZDE0LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzEwVDE1MjQ0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWIwMzQxZWQ4ZDhiYmNiZDMyMzM3MWUyMTEzNmJlZjJhYzNjZjhjNmNmYmJhYzllZjRhOWNkOTc3MTQ0MDE3MmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.W7D1-FbNU75NQfbvPq9w0QKbj5iqnfxDicHBJXfrwvY" width="60%">
   * 你需要 3M5423 UHMW 胶带（或类似的硬且超滑的 PTFE 胶带，厚度 0.2-0.3）。它用来润滑触摸键开关的按钮表面。  
     <img src="doc/button_lub.jpg" width="60%">
   * 将 3D 打印的部件和 PCBs 组装在一起。  
@@ -151,6 +153,20 @@ https://github.com/whowechina/
   * key1：`WEDCXZAQ`-按键环，`3`-Select
   * key2（小键盘）：`89632147`-按键环，`*`-Select
   * 上述两套都有：`F1`-Test `F2`-Service `F3`-投币
+
+### 故障排除
+* 连接电脑无反应，提示无法识别的USB设备，未知 USB 设备所需电量超出该端口所能提供的电量
+  * 请检查焊接，Type-C插座是否虚焊，+5V +3V3网络是否存在连锡短路的情况。并考虑更换另一条USB数据线。
+* 触摸区域无反应，自动触发，无规律跳动
+  * 请检查MPR121模块（芯片）是否焊接良好，模块背面ADD与GND之间连线是否切断。斑马线是否压接良好。
+  * 在USB串口中使用 `level` 命令查看数值（800~900之间为正常）。
+  * 请将ITO玻璃图案区域悬空，不要紧挨物体表面。ITO玻璃要固定在原位，不可自由活动，特别是在设备上电后。
+* 灯光不亮，灯光自某个按键后不亮
+  * 请检查LED信号线连接，断点处按键PCB轴体位置的WS2812是否虚焊或损坏。
+* 灯光颜色无法随游戏同步
+  * 请在游戏启动之前连接设备。
+* 单个或连续多个按键失效
+  * 请检查对应按键PCB上的BT ?和BUTTON_GND线缆的连通性。
 
 ## CAD 源文件
 我正在使用 OnShape 的免费订阅。它很强大，但不能将原始设计存档到本地，所以我只能在这里分享链接。STL/DXF/DWG 文件是从这个在线文档导出的。  
