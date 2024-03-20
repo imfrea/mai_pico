@@ -94,14 +94,14 @@ https://github.com/whowechina/
     <img src="doc/assemble_1.jpg" width="60%">
   * 首先焊接按钮 PCB。  
     <img src="doc/assemble_2.jpg" width="60%">
-  * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。（每一段线的长度约为4cm，你可以在其中一片按键板上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的连接）    
+  * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。（每一段线的长度约为4cm，你可以在其中一片按键板上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的单独连接）    
     <img src="doc/assemble_3.jpg" width="60%">
   * BUTTON 信号引脚还没有焊接，你可以后面再焊接。请不用担心按钮 GPIOs 的顺序，因为它们可以通过命令行界面重新映射。
 你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。    
     <img src="doc/button_top.png" width="60%">
     <img src="doc/io_top.png" width="60%">
     <img src="https://private-user-images.githubusercontent.com/28303037/307567372-29aac82f-90ae-47d9-b723-cf2ec78a5680.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTA2ODgwMzAsIm5iZiI6MTcxMDY4NzczMCwicGF0aCI6Ii8yODMwMzAzNy8zMDc1NjczNzItMjlhYWM4MmYtOTBhZS00N2Q5LWI3MjMtY2YyZWM3OGE1NjgwLmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTclMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzE3VDE1MDIxMFomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTIyNTFlNmI4ODM3NWRlZDFiODZkY2MzMjk0OTA1ZDY1MmJhZDA1MDQyNjJmOTc1ZWVmZGU3YjkyNjI2OTY2NWImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.1lZASZEUWlqn3xbAnIYQqkCGwSqdu7LDVvmoC4MNrx4" width="60%">
-  * 按照此顺序连接则无需后续调整。    
+  * 按照此顺序连接则无需后续调整（“①”数字标号是按钮游戏顺序，BTx/GPx是焊接顺序）。    
     <img src="doc/assemble_5_order.jpg" width="60%">
   * 如果你还需要Service（服务键），Test（测试键），Navigate（选择键），Coin（投币键）可自行补丁。    
     <img src="https://private-user-images.githubusercontent.com/11623830/304104492-cf639717-335c-4987-a29b-bce4c4a1cd14.jpg?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MTAwODQ1ODEsIm5iZiI6MTcxMDA4NDI4MSwicGF0aCI6Ii8xMTYyMzgzMC8zMDQxMDQ0OTItY2Y2Mzk3MTctMzM1Yy00OTg3LWEyOWItYmNlNGM0YTFjZDE0LmpwZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAzMTAlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMzEwVDE1MjQ0MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWIwMzQxZWQ4ZDhiYmNiZDMyMzM3MWUyMTEzNmJlZjJhYzNjZjhjNmNmYmJhYzllZjRhOWNkOTc3MTQ0MDE3MmQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.W7D1-FbNU75NQfbvPq9w0QKbj5iqnfxDicHBJXfrwvY" width="60%">
@@ -140,6 +140,7 @@ https://github.com/whowechina/
 * LED 和 Touch 协议的实现遵循 Sucareto 在 https://github.com/Sucareto/Mai2Touch 上的研究。
 * 它有一个命令行进行配置。你可以使用这个 Web Serial Terminal 连接到 Mai Pico 的 USB 串口。（注意："?" 是帮助）  
   https://googlechromelabs.github.io/serial-terminal/  
+  如果你无法访问这个链接，则可以下载Putty或其他类似的串口连接工具 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
   <img src="doc/cmd.png" width="80%">
 * 可以使用 `gpio` 命令重新映射按钮 GPIOs，固件支持 8 个主按钮和 4 个辅助按钮（分别是：Test, Service, Navigate, Coin）。
 * 可以使用 `rgb` 命令为每个按钮分配串联的 RGB LED 数量。
