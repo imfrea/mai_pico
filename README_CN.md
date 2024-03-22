@@ -67,6 +67,9 @@ https://github.com/whowechina/
   操作方法可以观看视频 https://www.bilibili.com/video/BV1gt42157SU/
   <img src="doc/mpr121_cut.png" width="40%">
 * 因为我们使用的是 MPR121 模块，而不是芯片，所以 U5、U6、U7 区域的离散组件留空。
+  请从左到右依次焊接U5、U6、U7上的模块，建议每次焊接一个模块就测试对应区域（用手扫过金手指），若功能正常方可继续焊接后面的模块，若不正常请立即排查焊接问题及当前的MPR121自身的好坏。
+  果你一次性焊接了所有的MPR121，将很难定位有故障的那个，返工也是极其不便的。  
+  <img src="doc/mpr121_electrode.png" width="60%">
 * 1x SN74LV1T34DBVR（SOT-23-5）电平转换器（U8），如果你找不到，可以用 0603 10ohm 电阻（R4）替代。
   https://www.lcsc.com/product-detail/Buffer-Driver-Transceiver_Texas-Instruments-SN74LV1T34DBVR_C100024.html
 * 4x 0603 1uF（0.1~1uF 都可以）电容器（C1，C2，C3，C7），可选，推荐。
