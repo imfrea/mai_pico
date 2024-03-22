@@ -64,9 +64,9 @@ https://github.com/whowechina/
   https://www.sparkfun.com/products/retired/9695 
 
   在将 MP121 模块焊接到主 PCB 板之前，记得用小刀**切断 ADDR 和 GND 之间的微小连线**，注意绝对不要切过头（只需要处理U3 U4这两个模块）。  
-  操作方法可以观看视频 https://www.bilibili.com/video/BV1gt42157SU/
+  操作方法可以观看视频 https://www.bilibili.com/video/BV1gt42157SU/  
   <img src="doc/mpr121_cut.png" width="40%">
-* 因为我们使用的是 MPR121 模块，而不是芯片，所以 U5、U6、U7 区域的离散组件留空。
+* 因为我们使用的是 MPR121 模块，而不是芯片，所以 U5、U6、U7 区域的离散组件留空。  
   请从左到右依次焊接U5、U6、U7上的模块，建议每次焊接一个模块就测试对应区域（用手扫过金手指），若功能正常方可继续焊接后面的模块，若不正常请立即排查焊接问题及当前的MPR121自身的好坏。
   果你一次性焊接了所有的MPR121，将很难定位有故障的那个，返工也是极其不便的。  
   <img src="doc/mpr121_electrode.png" width="60%">
