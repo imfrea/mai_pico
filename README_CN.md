@@ -99,7 +99,7 @@ https://github.com/whowechina/
   * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。（每一段线的长度约为4cm，你可以在其中一片按键板上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的单独连接）
   [可参照此接线图](doc/wiring_route.pdf)    
     <img src="doc/assemble_3.jpg" width="60%">
-  * 请不用担心BUTTON 信号引脚（BT ?）到按钮 GPIOs 的连接顺序，因为它们可以通过命令行界面重新映射。
+  * 请不用担心BUTTON 信号引脚（BT ?）到按钮 GPIOs 的连接顺序，因为它们可以通过命令行界面重新映射。  
   你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。    
     <img src="doc/button_top.png" width="60%">
     <img src="doc/io_top.png" width="60%">
