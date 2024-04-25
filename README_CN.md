@@ -96,6 +96,8 @@ https://github.com/whowechina/
     <img src="doc/assemble_1.jpg" width="60%">
   * 首先焊接按钮 PCB。  
     <img src="doc/assemble_2.jpg" width="60%">
+  * WS2812B是区分极性的，灯珠的左上角缺角要对准PCB丝印上的缺角。建议在测试LED均可点亮后再焊接上轴体。
+  
   * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。（每一段线的长度约为4cm，你可以在其中一片按键板上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的单独连接）
   [可参照此接线图](doc/wiring_route.pdf)    
     <img src="doc/assemble_3.jpg" width="60%">
@@ -129,7 +131,7 @@ https://github.com/whowechina/
   * 我使用 3M VHB 胶带（0.5mm 或 1mm 厚）将按钮环、ITO 玻璃和显示器粘在一起。
   * 只使用一点胶带，我使用 4 小块胶带将 ITO 玻璃粘到显示器上，另外 4 小块胶带将按钮环粘到 ITO 玻璃上。
   * 不要在 ITO 玻璃的走线上贴胶带，你可以在某个角度光线下看到 ITO 的走线。
-  * `Production\3DPrint\PCB_fold_*.stl` 还提供了一个简易的折叠连接器（不一定很适合你的便携屏，可能需要自行编辑模型），用于固定和限制io PCB的活动范围，避免排线受外力脱落。它还允许你将io PCB收纳到便携屏的背面。    
+  * `Production\3DPrint\PCB_fold_*.stl` 还提供了一个简易的折叠连接器（图中屏幕的厚度为1.3cm，斑马线长度为5cm，故不一定很适合你的便携屏，可能需要自行编辑模型，源文件是`PCB_fold_source.skp`），用于固定和限制io PCB的活动范围，避免排线受外力脱落。它还允许你将io PCB收纳到便携屏的背面。    
     <img src="doc/assembled_PCB_fold_1.jpg" width="60%">
     <img src="doc/assembled_PCB_fold_2.jpg" width="60%">
     <img src="doc/assembled_PCB_fold_3.jpg" width="60%">
@@ -143,7 +145,7 @@ https://github.com/whowechina/
 * LED 和 Touch 协议的实现遵循 Sucareto 在 https://github.com/Sucareto/Mai2Touch 上的研究。
 * 它有一个命令行进行配置。你可以使用这个 Web Serial Terminal 连接到 Mai Pico 的 USB 串口。（注意："?" 是帮助）  
   https://googlechromelabs.github.io/serial-terminal/  
-  如果你无法访问这个链接，则可以下载Putty或其他类似的串口连接工具 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html 或 https://apps.microsoft.com/detail/9nblggh43hdm
+  建议使用Chrome内核的浏览器打开，或者使用Putty或其他类似的串口连接工具 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html 或 https://apps.microsoft.com/detail/9nblggh43hdm
   <img src="doc/cmd.png" width="80%">
 * 可以使用 `gpio` 命令重新映射按钮 GPIOs，固件支持 8 个主按钮和 4 个辅助按钮（分别是：Test, Service, Navigate, Coin）。
 * 可以使用 `rgb` 命令为每个按钮分配串联的 RGB LED 数量。
