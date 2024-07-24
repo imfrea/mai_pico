@@ -103,7 +103,7 @@ https://github.com/whowechina/
   [可参照此接线图](doc/wiring_route.pdf)    
     <img src="doc/assemble_3.jpg" width="60%">
   * 请不用担心BUTTON 信号引脚（BT ?）到按钮 GPIOs 的连接顺序，因为它们可以通过命令行界面重新映射。  
-  你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。    
+  你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。    https://github.com/whowechina/mai_pico/issues/8#issue-2152602904
     <img src="doc/button_top.png" width="60%">
     <img src="doc/io_top.png" width="60%">
   * 按照此顺序连接则无需后续调整（“①”数字标号是按钮的游戏顺序，BTx/GPx是io板上的位置）。    
@@ -134,7 +134,7 @@ https://github.com/whowechina/
 
 ### 外壳
   * 本分支提供了一个简易实用的外壳，由两大块亚克力板和铝型材组成。兼容现有的电路设计，制造成本低廉（约70元），支持100和75mm的VESA显示器安装孔。详见`Production\Case`和[BOM详单](BOM_list_CN.md)  
-  效果如下图（有些许不一样）
+  效果如下图（有些许不一样）  
     <img src="doc/casing_front.jpg" width="60%">
 	<img src="doc/casing_back.jpg" width="60%">
 
