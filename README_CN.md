@@ -136,14 +136,12 @@ https://github.com/whowechina/
   * 本分支提供了一个简易实用的外壳，由两大块亚克力板和铝型材组成。兼容现有的电路设计，制造成本低廉（约70元），支持100和75mm的VESA显示器安装孔。详见`Production\Case`和[BOM详单](BOM_list_CN.md)  
   效果如下图（仅供参考，有些许不一样）  
     <img src="doc/casing_front.jpg" width="60%">
-	<img src="doc/casing_back.jpg" width="60%">
-    <img src="doc/casing_front.jpg" width="60%">
 	<img src="doc/casing_back.jpg" width="60%">  
   * 装配结构如下
-    <img src="doc/assemble_case_first_layer.jpg">
-    <img src="doc/assemble_case_second_layer.jpg">
-    <img src="doc/assemble_case_third_layer.jpg">
-    <img src="doc/assemble_case_fourth_layer.jpg">
+    <img src="doc/assemble_case_first_layer.jpg" width="100%">
+    <img src="doc/assemble_case_second_layer.jpg" width="100%">
+    <img src="doc/assemble_case_third_layer.jpg" width="100%">
+    <img src="doc/assemble_case_fourth_layer.jpg" width="100%">
 
 ### 固件
 * UF2 文件在 `Production\Firmware` 文件夹中。
