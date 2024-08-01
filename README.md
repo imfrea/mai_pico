@@ -1,4 +1,5 @@
 # Mai Pico - Maimai Style Mini Controller
+### The purpose of this fork is to provide more detailed production documents, material lists, and casing designs (in Chinese language).
 [点这里可以切换到中文版](README_CN.md)
 
 <img src="doc/main.jpg" width="80%">  

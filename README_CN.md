@@ -1,4 +1,5 @@
 # Mai Pico - Maimai 风格的迷你控制器
+### 本分支的目的在于提供更详细的制作文档，物料清单，以及外壳设计（中文语言）。
 [Click here for the English version of this guide.](README.md)
 
 <img src="doc/main.jpg" width="80%">  
@@ -129,21 +130,21 @@ https://github.com/whowechina/
   * WS2812B是区分极性的，灯珠的左上角缺角要对准PCB丝印上的缺角。建议在测试LED均可点亮后再焊接上轴体。
   
   * 按键 PCB 使用细小且柔软的 3 线电缆串联，它们是 G、IN/OUT、V，分别代表地、信号进/出和电源（每一段线的长度约为4cm）。按钮开关信号引脚还没有焊接，你可以后面再焊接。请不用担心按钮 GPIO 的顺序，因为它们可以通过命令行重新映射。    
-  你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。  
-  https://github.com/whowechina/mai_pico/issues/8#issue-2152602904
-    <img src="doc/button_top.png" width="60%">
-    <img src="doc/io_top.png" width="60%">
-  [可参照此接线图](doc/wiring_route.pdf)    
-    * 按照此顺序连接则无需后续调整（“①”数字标号是按钮的游戏顺序，BTx/GPx是io板上的位置）。    
+  你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。
+  可参照：https://github.com/whowechina/mai_pico/issues/8#issue-2152602904  
+    <img src="doc/button_v111_top.png" width="60%">
+    <img src="doc/io_top.png" width="60%">   
+  * 按照此顺序连接则无需后续调整（“①”数字标号是按钮的游戏顺序，BTx/GPx是io板上的位置）。  
+  [接线拓扑图](doc/wiring_route.pdf)   
     <img src="doc/assemble_5_order.jpg" width="60%">
     <img src="doc/assemble_3.jpg" width="60%">
   * 如果你还需要Service（服务键），Test（测试键），Navigate（选择键），Coin（投币键）可自行补丁。    
-    https://github.com/whowechina/mai_pico/issues/7#issuecomment-1938689911
+  可参照https://github.com/whowechina/mai_pico/issues/7#issuecomment-1938689911
   * 你需要 3M5423 UHMW 胶带（或类似的硬且超滑的 PTFE 胶带，厚度 0.2-0.3）。它用来润滑触摸键开关的按钮表面。  
     <img src="doc/button_lub.jpg" width="60%">
   * 将 3D 打印的部件和 PCBs 组装在一起。  
     <img src="doc/assemble_4.jpg" width="60%">
-  * 使用轴稍微扩大支撑孔，然后涂上一些键盘开关润滑剂，如 Krytox 205G0，使轴超级光滑。  
+  * 使用轴稍微扩大支撑孔（如有条件可使用2.1mm麻花钻头），然后涂上一些键盘开关润滑剂，如 Krytox 205G0，使轴超级光滑。  
     <img src="doc/assemble_5.jpg" width="60%">
   * 每个 `连接板` 需要 8x M2*4mm 螺丝将两个 `底座` 连接在一起。  
     <img src="doc/assemble_6.jpg" width="60%">
