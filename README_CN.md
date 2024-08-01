@@ -10,6 +10,7 @@
 * 使用 15.6 英寸的便携式屏幕制作。
 * 类似街机的体验。
 * 可以双人游戏。
+* 内置支持 AIME。
 * 所有源文件开放。
 
 感谢许多尊敬的爱好者和公司将他们的工具或材料免费或开源（KiCad，OnShape，InkScape，Raspberry 相关工具, 嘉立创）。
@@ -26,7 +27,14 @@
 ## 查看我的其他项目
 你也可以查看我其他的酷炫项目。
 
-<img src="https://github.com/whowechina/popn_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/iidx_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/iidx_teeny/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/chu_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/mai_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/diva_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/aic_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/popn_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/iidx_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/iidx_teeny/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/chu_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/mai_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/diva_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/aic_pico/raw/main/doc/main.gif" height="100px">
+<img src="https://github.com/whowechina/groove_pico/raw/main/doc/main.gif" height="100px">
 
 * Popn Pico: https://github.com/whowechina/popn_pico
 * IIDX Pico: https://github.com/whowechina/iidx_pico
@@ -35,6 +43,7 @@
 * Mai Pico: https://github.com/whowechina/mai_pico
 * Diva Pico: https://github.com/whowechina/diva_pico
 * AIC Pico: https://github.com/whowechina/aic_pico
+* Groove Pico: https://github.com/whowechina/groove_pico
 
 ## **声明** ##
 我在个人时间内制作了这个项目，没有任何经济利益或赞助。我将继续改进这个项目。我已尽我所能确保所有内容的准确性和功能性，但总有可能出现错误。如果你因使用这个开源项目而造成时间或金钱的损失，我不能负责。感谢你的理解。
@@ -46,7 +55,25 @@ https://github.com/whowechina/
 ## 关于许可证
 它是 CC-NC 授权。所以你只能给自己和你的朋友 DIY，不能利用这个项目赚钱。
 
-## 如何构建
+
+## 制作集锦
+开始之前，我想给你看一些爱好者的作品，来鼓励你继续下去。
+
+### **Lavide 的作品**
+  Lavide 制作了一个漂亮的紧凑型一体化 Mai Pico 机框！  
+  <img src="doc/lavide_1.jpg" width="30%"><img src="doc/lavide_2.jpg" width="30%"><img src="doc/lavide_3.jpg" width="21.65%">
+
+### **Romper 的作品**
+  Romper 利用 Mai Pico 的触摸设计制作了一个全尺寸的控制器。  
+  <img src="doc/romper_1.png" width="28%"><img src="doc/romper_2.jpg" width="50%">
+
+### **imfrea 的作品**
+  imfrea 给 Mai Pico 设计了一套平价又好看的亚克力外壳。  
+  <img src="doc/imfrea_1.jpg" width="30%"><img src="doc/imfrea_2.jpg" width="30%">  
+  你可以从他的 fork 分支下载亚克力外壳设计。  
+  https://github.com/imfrea/mai_pico
+
+## 如何制作
 [BOM详单与采购建议](BOM_list_CN.md)
 
 ### PCB
@@ -55,7 +82,7 @@ https://github.com/whowechina/
 * 1x Raspberry Pico Pi Pico 或 Pico W。  
   https://www.raspberrypi.com/products/raspberry-pi-pico
   
-  注意另一侧的 3 个引脚，它们很难焊接，可能会留下气泡（只需焊接TP2 TP3）。  
+  注意另一侧的 3 个引脚，它们很难焊接，可能会留下气泡（只需焊接TP2 TP3 给模块上的这两个焊盘预先上锡可提高焊接成功率）。  
   <img src="doc/solder_usb_txrx.jpg" width="60%">
 * 1x USB Type-C 插座（918-418K2023S40001 或 KH-TYPE-C-16P）
 * 2x 0603 5.1kohm 电阻（R20，R21）用于 USB，如果你打算直接使用 Pi Pico 上面原生的 USB 插座，那么 Type-C 插座和电阻都可以省去，焊接也会简单不少。
@@ -67,7 +94,7 @@ https://github.com/whowechina/
   操作方法可以观看视频 https://www.bilibili.com/video/BV1gt42157SU/  
   <img src="doc/mpr121_cut.png" width="40%">
 * 因为我们使用的是 MPR121 模块，而不是芯片，所以 U5、U6、U7 区域的离散组件留空。  
-  可以用手扫过金手指来测试功能，每个MPR121对应的电极范围如下：
+  焊接完成后，可以用手扫过金手指来测试功能，每个MPR121对应的电极范围如下：
   <img src="doc/mpr121_electrode.png" width="60%">
 * 1x SN74LV1T34DBVR（SOT-23-5）电平转换器（U8），如果你找不到，可以用 0603 10ohm 电阻（R4）替代。
   https://www.lcsc.com/product-detail/Buffer-Driver-Transceiver_Texas-Instruments-SN74LV1T34DBVR_C100024.html
@@ -75,6 +102,9 @@ https://github.com/whowechina/
 * 16x WS2812B-3528 RGB LED（每个按钮需要两个）。
 * 8x Kailh Choc v1 键盘开关，线性的，30gf 到 45gf 的。
   https://www.kailhswitch.com/mechanical-keyboard-switches/low-profile-key-switches/burnt-orange-switch.html
+* 1x PN532 NFC 模块和一些细电线, 只有需要 AIME 的时候才用得上.  
+  https://www.elechouse.com/product/pn532-nfc-rfid-module-v4/  
+  你需要把它焊接到 MPR121 所在的 I2C 总线上（GPIO 6 and 7）。
 
 ### ITO 玻璃
 * 找一个服务定制蚀刻 ITO 镀膜玻璃。AutoCAD 文件是 `Production\CAD\mai_pico_ito_v*.dwg`。使用 2mm 厚，10-20ohm 平方电阻的 ITO 镀膜玻璃。  
@@ -98,16 +128,15 @@ https://github.com/whowechina/
     <img src="doc/assemble_2.jpg" width="60%">
   * WS2812B是区分极性的，灯珠的左上角缺角要对准PCB丝印上的缺角。建议在测试LED均可点亮后再焊接上轴体。
   
-  * PCB 使用短且柔软的 4 线电缆串联，它们是 LED_GND、LED、LED_5V 和 BUTTON_GND。（每一段线的长度约为4cm，你可以在其中一片按键板上用一根跳线将LED_GND与BUTTON_GND连接，以省去BUTTON_GND与IO板的单独连接）  
-  注意：在 mai_button_v111.zip 的新文件中，BUTTON_GND已与LED_GND合并，请无视本图中两端的BUTTON_GND焊盘。
-  [可参照此接线图](doc/wiring_route.pdf)    
-    <img src="doc/assemble_3.jpg" width="60%">
-  * 请不用担心BUTTON 信号引脚（BT ?）到按钮 GPIOs 的连接顺序，因为它们可以通过命令行界面重新映射。  
-  你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。    https://github.com/whowechina/mai_pico/issues/8#issue-2152602904
+  * 按键 PCB 使用细小且柔软的 3 线电缆串联，它们是 G、IN/OUT、V，分别代表地、信号进/出和电源（每一段线的长度约为4cm）。按钮开关信号引脚还没有焊接，你可以后面再焊接。请不用担心按钮 GPIO 的顺序，因为它们可以通过命令行重新映射。    
+  你需要将每个按键板的BT ?分别连接到io 板上对应位置（可以焊接到BT1~8中间的孔中，或Raspberry Pico模块的GPxx上），连线则可以埋藏于按键PCB下的空隙中，然后汇聚再从link之间的孔洞中引出。  
+  https://github.com/whowechina/mai_pico/issues/8#issue-2152602904
     <img src="doc/button_top.png" width="60%">
     <img src="doc/io_top.png" width="60%">
-  * 按照此顺序连接则无需后续调整（“①”数字标号是按钮的游戏顺序，BTx/GPx是io板上的位置）。    
+  [可参照此接线图](doc/wiring_route.pdf)    
+    * 按照此顺序连接则无需后续调整（“①”数字标号是按钮的游戏顺序，BTx/GPx是io板上的位置）。    
     <img src="doc/assemble_5_order.jpg" width="60%">
+    <img src="doc/assemble_3.jpg" width="60%">
   * 如果你还需要Service（服务键），Test（测试键），Navigate（选择键），Coin（投币键）可自行补丁。    
     https://github.com/whowechina/mai_pico/issues/7#issuecomment-1938689911
   * 你需要 3M5423 UHMW 胶带（或类似的硬且超滑的 PTFE 胶带，厚度 0.2-0.3）。它用来润滑触摸键开关的按钮表面。  
@@ -150,19 +179,24 @@ https://github.com/whowechina/
 * 它有一个命令行进行配置。你可以使用这个 Web Serial Terminal 连接到 Mai Pico 的 USB 串口。（注意："?" 是帮助）  
   https://googlechromelabs.github.io/serial-terminal/  
   建议使用Chrome内核的浏览器打开，或者使用Putty或其他类似的串口连接工具 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-  <img src="doc/cmd.png" width="80%">
+  <img src="doc/cmd.png" width="60%">
+  * 当你点击这个网页的 Connect 按钮后，你能看到每个端口的名称。  
+   <img src="doc/ports.png" width="60%">
 * 可以使用 `gpio` 命令重新映射按钮 GPIOs，固件支持 8 个主按钮和 4 个辅助按钮（分别是：Test, Service, Navigate, Coin）。
+* 可以使用 `touch` 命令重新映射触摸键。对于用 ITO 膜手作触摸板，或者自己定制了引脚不同的 ITO 镀膜玻璃的朋友，这个命令会很有用:
+  * `touch` 不带参数，可以用来检测当前按下的触摸键。
+  * `touch 1 9 E6` 是映射第二个 MPR121 传感器的电极 9 到 “E6”，注意 “XX” 表示不连接任何触摸键。
 * 可以使用 `rgb` 命令为每个按钮分配串联的 RGB LED 数量。
 * 可以通过 `level` 命令调整 LED 的亮度。
 * 有 MPR121 参数调整和灵敏度设置，自己探索。
 * 它实现了 3 个 COM 端口，一个用于命令行，另外两个用于 LED 和 Touch。通过向命令行发出 `whoami`，每个 COM 端口都会打印它们的身份。  
   * 如果你的串口号混乱，则可以通过此方式调整：https://learn.microsoft.com/en-us/answers/questions/452998/how-to-assign-static-com-port-number-to-a-device  
   * 如果你的串口被占用，通过此方式解除：https://soldered.com/learn/how-to-clear-or-reset-com-ports/
-
 * 按钮信号通过 HID Joystick 或 HID NKRO（键盘）发送到主机。有两套 NKRO 键映射，使用 `hid <joy|key1|key2>` 在它们之间切换。在 NKRO 模式下，键映射是：
   * key1：`WEDCXZAQ`-按键环，`3`-Select
   * key2（小键盘）：`89632147`-按键环，`*`-Select
   * 上述两套都有：`F1`-Test `F2`-Service `F3`-投币
+* `factory` 用来复位到默认配置。当固件升级时，老配置可能失效，这时候请复位到默认配置，然后重新插拔一下控制器。
 
 ### 故障排除
 * 连接电脑无反应，提示无法识别的USB设备，未知 USB 设备所需电量超出该端口所能提供的电量

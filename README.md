@@ -8,6 +8,7 @@
 * Made with a 15.6 inch portable screen.
 * Arcade-like experience.
 * Dual-player is possible.
+* Built-in AIME support.
 * All source files open.
 
 Thanks to many respectful guys/companies who made their tools or materials free or open source (KiCad, OnShape, InkScape, Raspberry things, JLCPCB).
@@ -24,7 +25,14 @@ This project is the most complex one among all my projects.
 ## Check Out My Other Projects
 You can also check out my other cool projects.
 
-<img src="https://github.com/whowechina/popn_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/iidx_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/iidx_teeny/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/chu_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/mai_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/diva_pico/raw/main/doc/main.jpg" height="100px"><img src="https://github.com/whowechina/aic_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/popn_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/iidx_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/iidx_teeny/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/chu_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/mai_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/diva_pico/raw/main/doc/main.jpg" height="100px">
+<img src="https://github.com/whowechina/aic_pico/raw/main/doc/main.gif" height="100px">
+<img src="https://github.com/whowechina/groove_pico/raw/main/doc/main.gif" height="100px">
 
 * Popn Pico: https://github.com/whowechina/popn_pico
 * IIDX Pico: https://github.com/whowechina/iidx_pico
@@ -33,12 +41,32 @@ You can also check out my other cool projects.
 * Mai Pico: https://github.com/whowechina/mai_pico
 * Diva Pico: https://github.com/whowechina/diva_pico
 * AIC Pico: https://github.com/whowechina/aic_pico
+* Groove Pico: https://github.com/whowechina/groove_pico
 
 ## **Disclaimer** ##
 I made this project in my personal time with no financial benefit or sponsorship. I will continue to improve the project. I have done my best to ensure that everything is accurate and functional, there's always a chance that mistakes may occur. I cannot be held responsible for any loss of your time or money that may result from using this open source project. Thank you for your understanding.
 
 ## About the License
 It's CC-NC. So DIY for yourself and for your friend, don't make money from it.
+
+## Builds Gallery
+Before we start, I want to encourage you with some hobbyist builds.
+
+### **Lavide's Build**
+  Lavide made a nice compact all-in-one Mai Pico cab!  
+  <img src="doc/lavide_1.jpg" width="30%"><img src="doc/lavide_2.jpg" width="30%"><img src="doc/lavide_3.jpg" width="21.65%">
+
+### **Romper's Build**
+  Romper made a full-size con using Mai Pico's touch design.  
+  <img src="doc/romper_1.png" width="28%"><img src="doc/romper_2.jpg" width="50%">  
+  Check out his build guide here.  
+  https://github.com/ir0nq/maimai-homemade-controller
+
+### **imfrea's Build**
+  imfrea designed a nice-looking and inexpensive acrylic housing for Mai Pico.  
+  <img src="doc/imfrea_1.jpg" width="30%"><img src="doc/imfrea_2.jpg" width="30%">  
+  You can download the acrylic case designs from his fork of Mai Pico here.  
+  https://github.com/imfrea/mai_pico
 
 ## HOW TO BUILD
 ### PCB
@@ -61,6 +89,9 @@ It's CC-NC. So DIY for yourself and for your friend, don't make money from it.
 * 16x WS2812B-3528 RGB LEDs (each button needs two).
 * 8x Kailh Choc v1 key switches, linear, 30gf to 45gf ones.  
   https://www.kailhswitch.com/mechanical-keyboard-switches/low-profile-key-switches/burnt-orange-switch.html
+* 1x PN532 NFC module and some thin wires, only needed if you want AIME.  
+  https://www.elechouse.com/product/pn532-nfc-rfid-module-v4/  
+  You need to solder it to the same I2C as the MPR121 (GPIO 6 and 7).
 
 ### ITO Glass
 * Find a service to make custom etching ITO coated glass. The AutoCAD file is `Production\CAD\mai_pico_ito_v*.dwg`. Use 2mm thickness, 10-20ohm sheet resistance ITO coated glass.
@@ -80,7 +111,7 @@ It's CC-NC. So DIY for yourself and for your friend, don't make money from it.
     <img src="doc/assemble_1.jpg" width="60%">
   * Solder the button PCB first.  
     <img src="doc/assemble_2.jpg" width="60%">
-  * PCBs are daisy-chained using short and soft 4-wire cable, they're LED_GND, LED, LED_5V and BUTTON_GND. The BUTTON signal pins are not soldered yet, you can later wire them. Don't worry about the order of button GPIOs, because they can be remapped through command line interface.    
+  * Button PCBs are daisy-chained using short and soft 3-wire cable, they're G, IN/OUT, V (GND, Signal In/Out and VCC respectively). RGB signal goes in from "IN" and goes out to the next LED through "OUT". The "Btn" button signal pins are not soldered yet, you can later wire them. Don't worry about the order of button GPIOs, because they can be remapped through command line interface.    
     <img src="doc/assemble_3.jpg" width="60%">
   * You need 3M5423 UHMW film tape (or similar hard and super-smooth PTFE tape with 0.2-0.3 thickness). It is to lubricate the button surface that touches the keyswitch.  
     <img src="doc/button_lub.jpg" width="60%">
@@ -112,10 +143,15 @@ It's CC-NC. So DIY for yourself and for your friend, don't make money from it.
 * UF2 file is in `Production\Firmware` folder.
 * For the new build, hold the BOOTSEL button while connect the USB to a PC, there will be a disk named "RPI-RP2" showed up. Drag the UF2 firmware binary file into it. That's it.
 * LED and Touch protocols are implemented following Sucareto's research at https://github.com/Sucareto/Mai2Touch.
-* It has a command line to do configuration. You can use this Web Serial Terminal to connect to the USB serial port of the Mai Pico. (Note: "?" is for help)  
+* It has a command line to do configuration. You can use this Web Serial Terminal to connect to the USB serial port of the Mai Pico. (`?` to display help message.)  
   https://googlechromelabs.github.io/serial-terminal/  
-  <img src="doc/cmd.png" width="80%">
-* Button GPIOs can be remapped using `gpio` command. Firmware supports 8 main buttons on the ring and 4 auxiliary buttons (Test, Service, Navigate and Coin). 
+  <img src="doc/cmd.png" width="60%">
+   * Please note that when you click "Connect" button, you'll actually see the name of each port.  
+   <img src="doc/ports.png" width="60%">
+* Button GPIOs can be remapped using `gpio` command. Firmware supports 8 main buttons on the ring and 4 auxiliary buttons (Test, Service, Navigate and Coin).
+* Touch keys can be remapped using `touch` command. For people who's using Mai Pico to drive a custom ITO film or a ITO glass, this command will be very useful. For example:
+  * `touch` with no parameter is to detect touched keys.
+  * `touch 1 9 E6` is to set the second MPR121's electrode 9 to key "E6". Key name of "XX" means "Not Connected".
 * Daisy chained RGB LED numbers for each button can be assigned using `rgb` command.
 * LED brightness can be adjusted by `level` command.
 * There are MPR121 parameter tuning and sensitive settings, explore them yourself.
@@ -124,6 +160,7 @@ It's CC-NC. So DIY for yourself and for your friend, don't make money from it.
   * key1: `WEDCXZAQ`-Ring Buttons, `3`-Select
   * key2 (Numpad): `89632147`-Ring Buttons, `*`-Select
   * Above two sets both have: `F1`-Test `F2`-Service `F3`-Coin
+* `factory` to reset to default. When there's a firmware update, the old configuration may become corrupted, you can reset configuration, then re-plug the controller.
 
 ## CAD Source File
 I'm using OnShape free subscription. It's powerful but it can't archive original designs to local, so I can only share the link here. STL/DXF/DWG files are exported from this online document.  

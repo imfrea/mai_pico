@@ -9,6 +9,7 @@
 
 #include <stdint.h>
 #include <stdlib.h>
+#include <ctype.h>
 #include <stdbool.h>
 
 #include "bsp/board.h"
@@ -20,19 +21,10 @@
 #include "config.h"
 #include "mpr121.h"
 
-#define MPR121_ADDR 0x5A
-
 static uint16_t touch[3];
 static unsigned touch_counts[36];
 
-enum touch_pads {
-    A1 = 0, A2, A3, A4, A5, A6, A7, A8,
-    B1, B2, B3, B4, B5, B6, B7, B8,
-    C1, C2, D1, D2, D3, D4, D5, D6, D7, D8,
-    E1, E2, E3, E4, E5, E6, E7, E8,
-};
-
-static unsigned touch_map[] = TOUCH_MAP;
+static uint8_t touch_map[] = TOUCH_MAP;
 
 void touch_init()
 {
@@ -43,9 +35,73 @@ void touch_init()
     gpio_pull_up(I2C_SCL);
     
     for (int m = 0; m < 3; m++) {
-        mpr121_init(MPR121_ADDR + m);
+        mpr121_init(MPR121_BASE_ADDR + m);
     }
     touch_update_config();
+    memcpy(touch_map, mai_cfg->alt.touch, sizeof(touch_map));
+}
+
+const char *touch_key_name(unsigned key)
+{
+    static char name[3] = { 0 };
+    if (key < 18) {
+        name[0] = "ABC"[key / 8];
+        name[1] = '1' + key % 8;
+    } else if (key < 34) {
+        name[0] = "DE"[(key - 18) / 8];
+        name[1] = '1' + (key - 18) % 8;
+    } else {
+        return "XX";
+    }
+    return name;
+}
+
+int touch_key_by_name(const char *name)
+{
+    if (strlen(name) != 2) {
+        return -1;
+    }
+    if (strcasecmp(name, "XX") == 0) {
+        return 255;
+    }
+
+    int zone = toupper(name[0]) - 'A';
+    int id = name[1] - '1';
+    if ((zone < 0) || (zone > 4) || (id < 0) || (id > 7)) {
+        return -1;
+    }
+    if ((zone == 2) && (id > 1)) {
+        return -1; // C1 and C2 only
+    }
+    const int offsets[] = { 0, 8, 16, 18, 26 };
+    return offsets[zone] + id;
+}
+
+int touch_key_channel(unsigned key)
+{
+    for (int i = 0; i < 36; i++) {
+        if (touch_map[i] == key) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+unsigned touch_key_from_channel(unsigned channel)
+{
+    if (channel < 36) {
+        return touch_map[channel];
+    }
+    return 0xff;
+}
+
+void touch_set_map(unsigned sensor, unsigned key)
+{
+    if (sensor < 36) {
+        touch_map[sensor] = key;
+        memcpy(mai_cfg->alt.touch, touch_map, sizeof(mai_cfg->alt.touch));
+        config_changed();
+    }
 }
 
 static uint64_t touch_reading;
@@ -79,22 +135,32 @@ static void touch_stat()
 
 void touch_update()
 {
-    touch[0] = mpr121_touched(MPR121_ADDR) & 0x0fff;
-    touch[1] = mpr121_touched(MPR121_ADDR + 1) & 0x0fff;
-    touch[2] = mpr121_touched(MPR121_ADDR + 2) & 0x0fff;
+    touch[0] = mpr121_touched(MPR121_BASE_ADDR) & 0x0fff;
+    touch[1] = mpr121_touched(MPR121_BASE_ADDR + 1) & 0x0fff;
+    touch[2] = mpr121_touched(MPR121_BASE_ADDR + 2) & 0x0fff;
 
     remap_reading();
 
     touch_stat();
 }
 
+static bool sensor_ok[3];
+bool touch_sensor_ok(unsigned i)
+{
+    if (i < 3) {
+        return sensor_ok[i];
+    }
+    return false;
+}
+
 const uint16_t *touch_raw()
 {
     static uint16_t readout[36];
     uint16_t buf[36];
-    mpr121_raw(MPR121_ADDR, buf, 12);
-    mpr121_raw(MPR121_ADDR + 1, buf + 12, 12);
-    mpr121_raw(MPR121_ADDR + 2, buf + 24, 10);
+
+    for (int i = 0; i < 3; i++) {
+        sensor_ok[i] = mpr121_raw(MPR121_BASE_ADDR + i, buf + i * 12, 12);
+    }
 
     for (int i = 0; i < 34; i++) {
         readout[touch_map[i]] = buf[i];
@@ -131,13 +197,16 @@ void touch_reset_stat()
 void touch_update_config()
 {
     for (int m = 0; m < 3; m++) {
-        mpr121_debounce(MPR121_ADDR + m, mai_cfg->sense.debounce_touch,
-                                         mai_cfg->sense.debounce_release);
-        mpr121_sense(MPR121_ADDR + m, mai_cfg->sense.global,
-                                      mai_cfg->sense.zones + m * 12,
-                                      m != 2 ? 12 : 10);
-        mpr121_filter(MPR121_ADDR + m, mai_cfg->sense.filter >> 6,
-                                       (mai_cfg->sense.filter >> 4) & 0x03,
-                                       mai_cfg->sense.filter & 0x07);
+        mpr121_debounce(MPR121_BASE_ADDR + m,
+                        mai_cfg->sense.debounce_touch,
+                        mai_cfg->sense.debounce_release);
+        mpr121_sense(MPR121_BASE_ADDR + m,
+                     mai_cfg->sense.global,
+                     mai_cfg->sense.zones + m * 12,
+                     m != 2 ? 12 : 10);
+        mpr121_filter(MPR121_BASE_ADDR + m,
+                      mai_cfg->sense.filter >> 6,
+                      (mai_cfg->sense.filter >> 4) & 0x03,
+                      mai_cfg->sense.filter & 0x07);
     }
 }
