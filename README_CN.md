@@ -191,8 +191,8 @@ https://github.com/whowechina/
 * 可以通过 `level` 命令调整 LED 的亮度。
 * 有 MPR121 参数调整和灵敏度设置，自己探索。
 * 它实现了 3 个 COM 端口，一个用于命令行，另外两个用于 LED 和 Touch。通过向命令行发出 `whoami`，每个 COM 端口都会打印它们的身份。  
-  * 如果你的串口号混乱，则可以通过此方式调整：https://learn.microsoft.com/en-us/answers/questions/452998/how-to-assign-static-com-port-number-to-a-device  
-  * 如果你的串口被占用，通过此方式解除：https://soldered.com/learn/how-to-clear-or-reset-com-ports/
+  * 如果你的串口号混乱，则可以通过此方式调整（修改端口号后需要重新拔插USB）：https://learn.microsoft.com/en-us/answers/questions/452998/how-to-assign-static-com-port-number-to-a-device  
+  * 如果你的串口被占用，通过此方式解除（如有“蓝牙链接上的标准串行”占用了指定端口号请将其卸载）：https://soldered.com/learn/how-to-clear-or-reset-com-ports/
 * 按钮信号通过 HID Joystick 或 HID NKRO（键盘）发送到主机。有两套 NKRO 键映射，使用 `hid <joy|key1|key2>` 在它们之间切换。在 NKRO 模式下，键映射是：
   * key1：`WEDCXZAQ`-按键环，`3`-Select
   * key2（小键盘）：`89632147`-按键环，`*`-Select
@@ -209,7 +209,7 @@ https://github.com/whowechina/
 * 灯光不亮，灯光自某个按键后不亮
   * 请检查灯珠缺口方向是否正确，LED信号线连接，断点处按键PCB电容旁的WS2812是否虚焊或损坏。
 * 灯光颜色无法随游戏同步
-  * 请在游戏启动之前连接设备。
+  * 检查LED端口是否正确设置，请在游戏启动之前连接设备。
 * 单个或连续多个按键失效
   * 请检查对应按键PCB上的BT ?和BUTTON_GND线缆的连通性。
 
