@@ -163,7 +163,7 @@ https://github.com/whowechina/
   * 不要在 ITO 玻璃的走线上贴胶带，你可以在某个角度光线下看到 ITO 的走线。
 
 ### 外壳
-  * 本分支提供了一个简易实用的外壳，由两大块亚克力板和铝型材组成。兼容现有的电路设计，制造成本低廉（约70元），支持100和75mm的VESA显示器安装孔。详见`Production\Case`和[BOM详单](BOM_list_CN.md)  
+  * 本分支提供了一个简易实用的外壳，由两大块亚克力板和铝型材组成。兼容现有的电路设计，制造成本低廉（约70RMB 完整版约120RMB），支持100和75mm的VESA显示器安装孔。详见`Production\Case`和[BOM详单](BOM_list_CN.md)  
   效果如下图（仅供参考，有些许不一样）  
     <img src="doc/casing_front.jpg" width="60%">
 	<img src="doc/casing_back.jpg" width="60%">  
